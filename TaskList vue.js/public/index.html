@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="icon" href="./favicon.ico">
+	<link rel="stylesheet" href="./index.css">
+	<title>TaskList App on Vue.js</title>
+</head>
+
+<body>
+	<div class="body__wrapper">
+		<!-- preloader -->
+		<div class="preloader" id="page-preloader">
+			<div class="preloader_content">
+				<div class="preloader_first"></div>
+				<div class="preloader_second"></div>
+				<div class="preloader_third"></div>
+			</div>
+		</div>
+		<!-- preloader -->
+
+		<div id="app" v-cloak>
+			<div class="table_wrapper">
+				<div class="table_wrapper">
+
+					<table>
+
+						<caption>
+							<h1 class="h1">TaskList App on vue.js</h1>
+						</caption>
+						<tr>
+							<td>
+								<h2 class="h2">All Tasks counter from array: {{Tasks.length}}</h2>
+							</td>
+						</tr>
+						<tr>
+							<th>Name</th>
+							<th>Tags</th>
+							<th>Actual effort</th>
+							<th>Estimated effort</th>
+							<th>Due date</th>
+						</tr>
+						<tr v-for="task of Tasks" v-if="task.obj_status==='active'">
+							<td> <a href="#{{task.id}}"
+									v-bind:style="task.is_high_priority && {'font-weight':'bold', 'color':'red'}">{{
+									task.name.toUpperCase() }}</a></td>
+							<td>
+								<span v-for="tag in task.tags">{{tag}} </span>
+							</td>
+							<td>{{ task.actual_effort }}</td>
+							<td>{{ task.estimated_effort }}</td>
+							<td>{{ task.due_date }}</td>
+						</tr>
+					</table>
+
+				</div>
+
+			</div>
+
+		</div>
+		<script src="../src/main.js" defer> </script>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+
+</body>
+
+</html>
